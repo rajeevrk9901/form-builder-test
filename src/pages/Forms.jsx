@@ -49,6 +49,84 @@ const Forms = () => {
         ]
     });
 
+    const form1 = {
+        "components": [
+            {
+                "addAnotherPosition": "bottom",
+                "label": "Data Grid",
+                "addAnother": "",
+                "mask": false,
+                "type": "datagrid",
+                "input": true,
+                "key": "dataGrid",
+                "components": [
+                    {
+                        "label": false,
+                        "allowMultipleMasks": false,
+                        "inputMasks": [
+                            {
+                                "label": "",
+                                "mask": ""
+                            }
+                        ],
+                        "type": "textfield",
+                        "input": true,
+                        "key": "textField2",
+                        "row": "0-0"
+                    },
+                    {
+                        "label": false,
+                        "allowMultipleMasks": false,
+                        "inputMasks": [
+                            {
+                                "label": "",
+                                "mask": ""
+                            }
+                        ],
+                        "type": "textfield",
+                        "input": true,
+                        "key": "textField3",
+                        "row": "0-1"
+                    }
+                ]
+            },
+            {
+                "label": "Text Field",
+                "allowMultipleMasks": false,
+                "inputMasks": [
+                    {
+                        "label": "",
+                        "mask": ""
+                    }
+                ],
+                "type": "textfield",
+                "input": true,
+                "key": "textField4"
+            },
+            {
+                "type": "button",
+                "label": "Submit",
+                "key": "submit",
+                "disableOnInvalid": true,
+                "theme": "primary",
+                "input": true
+            },
+            {
+                "label": "Text Field",
+                "allowMultipleMasks": false,
+                "inputMasks": [
+                    {
+                        "label": "",
+                        "mask": ""
+                    }
+                ],
+                "type": "textfield",
+                "input": true,
+                "key": "textField5"
+            }
+        ],
+        "display": "form"
+    }
 
     // const form = {
     //   name: 'My Form',
@@ -117,7 +195,7 @@ const Forms = () => {
 
         <div className='w-full max-w-lg mx-auto p-6'>
             <h1 className='text-3xl font-bold mb-6'>Contact Us</h1>
-            <Form src={formSchema} onSubmit={onSubmit} />
+            <Form src={form1} onSubmit={onSubmit} />
         </div>
 
     );

@@ -44,7 +44,7 @@ const FormBuilders = () => {
 
             <FormBuilder
                 form={initialValues}
-                options={{ builder: { basic: false } }}
+                
                 onChange={(submission) => {
                     console.log('Form data:', submission.data);
                 }}
