@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FormBuilder } from '@formio/react'
 
 const FormBuilders = () => {
+
+    const [jsonSchema, setJsonSchema] = useState([])
+    const [copySuccess, setCopySuccess] = useState('');
+
 
     const initialValues = {
         components: [
@@ -39,16 +43,35 @@ const FormBuilders = () => {
         ]
     }
 
+    const handleFormChange = (submission) => {
+        const formJson = JSON.stringify(submission, null, 2);
+        console.log(formJson);
+        // setJsonSchema(formJson)
+    }
+
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(jsonSchema);
+            setCopySuccess('Copied!');
+        } catch (err) {
+            setCopySuccess('Failed to copy!');
+        }
+    };
+
     return (
         <div>
 
             <FormBuilder
                 form={initialValues}
-                
-                onChange={(submission) => {
-                    console.log('Form data:', submission.data);
-                }}
+
+                onChange={handleFormChange}
             />
+
+            <div className='pt-5 ml-5'>
+                <button className="btn btn-primary" onClick={copyToClipboard}>Copy </button> <span>{copySuccess}</span>
+                <pre>{jsonSchema}</pre>
+            </div>
 
 
         </div>
