@@ -6,6 +6,7 @@ import Experience from './components/Experience'
 import ContactUs from './components/ContactUs'
 import BasicInfo from './components/BasicInfo'
 import Address from './components/Address'
+import BasicForm from './components/BasicForm'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/contactus' element={<ContactUs />} />
         <Route path='/basicinfo' element={<BasicInfo />} />
         <Route path='/address' element={<Address />} />
+        <Route path='/basicform' element={<BasicForm />} />
         {/* <Route exact path='/form-builder' component={FormBuilder} /> */}
       </Routes>
     </BrowserRouter>
