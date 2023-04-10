@@ -1,5 +1,7 @@
 import React from 'react'
 import { Form } from '@formio/react';
+import indianState from '../Data/IndianState.json'
+import countryCode from '../Data/CountryCode.json'
 
 const BasicForm = () => {
 
@@ -33,7 +35,7 @@ const BasicForm = () => {
         "placeholder": "Enter your email",
         "type": "email",
         "input": true,
-        "key": "email2",
+        "key": "email",
         "defaultValue": "",
         "validate": {
           "required": true,
@@ -43,18 +45,64 @@ const BasicForm = () => {
         }
       },
       {
-        "label": "Phone Number",
-        "placeholder": "Enter your mobile no",
-        "allowMultipleMasks": false,
-        "inputMasks": [
+        "label": "Mobile Number",
+        "columns": [
           {
-            "label": "",
-            "mask": ""
+            "components": [
+              {
+                "label": "CountryCode",
+                "widget": "choicesjs",
+                "tableView": true,
+                "dataSrc": "json",
+                "defaultValue": {
+                  "name": "India",
+                  "dial_code": "+91",
+                  "code": "IN"
+                },
+                "data": {
+                  "json": countryCode
+                },
+                "template": "<span>{{ item.dial_code }}</span>",
+                "key": "select",
+                "type": "select",
+                "input": true
+              }
+            ],
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 2,
+            "width": 2
+          },
+          {
+            "components": [
+              {
+                "label": "Mobile Number",
+                "mask": false,
+                "tableView": false,
+                "delimiter": false,
+                "requireDecimal": false,
+                "inputFormat": "plain",
+                "truncateMultipleSpaces": false,
+                "key": "number",
+                "type": "number",
+                "input": true
+              }
+            ],
+            "width": 6,
+            "offset": 0,
+            "push": 0,
+            "pull": 0,
+            "size": "md",
+            "currentWidth": 6
           }
         ],
-        "type": "phoneNumber",
-        "input": true,
-        "key": "phoneNumber2"
+        "autoAdjust": true,
+        "key": "columns",
+        "type": "columns",
+        "input": false,
+        "tableView": false
       },
       {
         "label": "Pan Card Number",
@@ -69,7 +117,7 @@ const BasicForm = () => {
         "customClass": ".text-warning",
         "type": "textfield",
         "input": true,
-        "key": "aadhar",
+        "key": "pan",
         "defaultValue": "",
         "validate": {
           "required": true,
@@ -100,7 +148,7 @@ const BasicForm = () => {
         ],
         "type": "textfield",
         "input": true,
-        "key": "aadhar2",
+        "key": "aadhar",
         "defaultValue": "",
         "validate": {
           "required": true,
@@ -117,7 +165,7 @@ const BasicForm = () => {
         "mask": false,
         "type": "day",
         "input": true,
-        "key": "day2",
+        "key": "dob",
         "fields": {
           "day": {
             "type": "number"
@@ -137,27 +185,31 @@ const BasicForm = () => {
         }
       },
       {
-        "optionsLabelPosition": "right",
-        "values": {
-          "0": {
-            "label": "Male",
-            "value": "male"
-          },
-          "1": {
-            "label": "Female",
-            "value": "female"
-          },
-          "2": {
-            "label": "Other",
-            "value": "other"
-          }
-        },
         "label": "Gender",
+        "optionsLabelPosition": "right",
+        "customClass": "",
         "inline": true,
-        "mask": false,
+        "tableView": false,
+        "values": [
+          {
+            "label": "MALE",
+            "value": "male",
+            "shortcut": ""
+          },
+          {
+            "label": "FEMALE",
+            "value": "female",
+            "shortcut": ""
+          },
+          {
+            "label": "OTHER",
+            "value": "other",
+            "shortcut": ""
+          }
+        ],
+        "key": "gender",
         "type": "radio",
-        "input": true,
-        "key": "gender"
+        "input": true
       },
 
       {
@@ -165,22 +217,22 @@ const BasicForm = () => {
         "mask": false,
         "type": "container",
         "input": true,
-        "key": "container",
+        "key": "currAddress",
         "components": [
           {
             "label": "Current Address",
             "placeholder": "address 1",
             "allowMultipleMasks": false,
             "inputMasks": [
-                {
-                    "label": "",
-                    "mask": ""
-                }
+              {
+                "label": "",
+                "mask": ""
+              }
             ],
             "type": "textfield",
             "input": true,
             "key": "currentAddress"
-        },
+          },
           {
             "label": "",
             "hideLabel": true,
@@ -202,20 +254,162 @@ const BasicForm = () => {
                 "components": [
                   {
                     "label": "Country",
-                    "placeholder": "Choose your country",
                     "mask": false,
                     "type": "select",
                     "input": true,
-                    "key": "select",
-                    "valueProperty": "value"
-                  },
+                    "key": "currCountry",
+                    "defaultValue": "",
+                    "validate": {
+                        "required": true,
+                        "select": false,
+                        "unique": false,
+                        "customMessage": "",
+                        "json": ""
+                    },
+                    "conditional": {
+                        "json": ""
+                    },
+                    "data": {
+                        "json": [
+                            {
+                                "id": 101,
+                                "name": "India",
+                                "iso3": "IND",
+                                "iso2": "IN",
+                                "numeric_code": "356",
+                                "phone_code": "91",
+                                "capital": "New Delhi",
+                                "currency": "INR",
+                                "currency_name": "Indian rupee",
+                                "currency_symbol": "₹",
+                                "tld": ".in",
+                                "native": "भारत",
+                                "region": "Asia",
+                                "subregion": "Southern Asia",
+                                "timezones": [
+                                    {
+                                        "zoneName": "Asia/Kolkata",
+                                        "gmtOffset": 19800,
+                                        "gmtOffsetName": "UTC+05:30",
+                                        "abbreviation": "IST",
+                                        "tzName": "Indian Standard Time"
+                                    }
+                                ],
+                                "translations": {
+                                    "kr": "인도",
+                                    "pt-BR": "Índia",
+                                    "pt": "Índia",
+                                    "nl": "India",
+                                    "hr": "Indija",
+                                    "fa": "هند",
+                                    "de": "Indien",
+                                    "es": "India",
+                                    "fr": "Inde",
+                                    "ja": "インド",
+                                    "it": "India",
+                                    "cn": "印度",
+                                    "tr": "Hindistan"
+                                },
+                                "latitude": "20.00000000",
+                                "longitude": "77.00000000",
+                                "emoji": "🇮🇳",
+                                "emojiU": "U+1F1EE U+1F1F3"
+                            },
+                            {
+                                "id": 102,
+                                "name": "Indonesia",
+                                "iso3": "IDN",
+                                "iso2": "ID",
+                                "numeric_code": "360",
+                                "phone_code": "62",
+                                "capital": "Jakarta",
+                                "currency": "IDR",
+                                "currency_name": "Indonesian rupiah",
+                                "currency_symbol": "Rp",
+                                "tld": ".id",
+                                "native": "Indonesia",
+                                "region": "Asia",
+                                "subregion": "South-Eastern Asia",
+                                "timezones": [
+                                    {
+                                        "zoneName": "Asia/Jakarta",
+                                        "gmtOffset": 25200,
+                                        "gmtOffsetName": "UTC+07:00",
+                                        "abbreviation": "WIB",
+                                        "tzName": "Western Indonesian Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Jayapura",
+                                        "gmtOffset": 32400,
+                                        "gmtOffsetName": "UTC+09:00",
+                                        "abbreviation": "WIT",
+                                        "tzName": "Eastern Indonesian Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Makassar",
+                                        "gmtOffset": 28800,
+                                        "gmtOffsetName": "UTC+08:00",
+                                        "abbreviation": "WITA",
+                                        "tzName": "Central Indonesia Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Pontianak",
+                                        "gmtOffset": 25200,
+                                        "gmtOffsetName": "UTC+07:00",
+                                        "abbreviation": "WIB",
+                                        "tzName": "Western Indonesian Time"
+                                    }
+                                ],
+                                "translations": {
+                                    "kr": "인도네시아",
+                                    "pt-BR": "Indonésia",
+                                    "pt": "Indonésia",
+                                    "nl": "Indonesië",
+                                    "hr": "Indonezija",
+                                    "fa": "اندونزی",
+                                    "de": "Indonesien",
+                                    "es": "Indonesia",
+                                    "fr": "Indonésie",
+                                    "ja": "インドネシア",
+                                    "it": "Indonesia",
+                                    "cn": "印度尼西亚",
+                                    "tr": "Endonezya"
+                                },
+                                "latitude": "-5.00000000",
+                                "longitude": "120.00000000",
+                                "emoji": "🇮🇩",
+                                "emojiU": "U+1F1EE U+1F1E9"
+                            }
+                        ]
+                    },
+                    "properties": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "tags": [],
+                    "customConditional": "",
+                    "dataSrc": "json",
+                    "template": "<span>{{ item.name }}</span>",
+                    "limit": null,
+                    "url": "",
+                    "resource": null,
+                    "valueProperty": null,
+                    "selectValues": "",
+                    "disableLimit": false,
+                    "searchField": "",
+                    "refreshOn": null,
+                    "clearOnRefresh": false,
+                    "reference": false
+                },
                   {
                     "label": "District",
                     "placeholder": "Choose your district",
                     "mask": false,
                     "type": "select",
                     "input": true,
-                    "key": "select",
+                    "key": "currDistrict",
                     "valueProperty": "value"
                   },
                   {
@@ -230,7 +424,7 @@ const BasicForm = () => {
                     ],
                     "type": "textfield",
                     "input": true,
-                    "key": "textField"
+                    "key": "pincode"
                   }
                 ],
                 "width": 6,
@@ -246,12 +440,25 @@ const BasicForm = () => {
                 "components": [
                   {
                     "label": "State",
-                    "placeholder": "Choose your state",
                     "mask": false,
                     "type": "select",
                     "input": true,
                     "key": "state",
-                    "valueProperty": "value"
+                    "defaultValue": "",
+                    "data": {
+                        "json": indianState,
+                    },
+                    "dataSrc": "json",
+                    "template": "<span>{{ item.name }}</span>",
+                    "limit": null,
+                    "refreshOn": null,
+                    "url": "",
+                    "resource": null,
+                    "selectValues": "",
+                    "disableLimit": false,
+                    "searchField": "",
+                    "clearOnRefresh": false,
+                    "reference": false
                   },
                   {
                     "label": "City",
@@ -259,7 +466,290 @@ const BasicForm = () => {
                     "mask": false,
                     "type": "select",
                     "input": true,
-                    "key": "cIty",
+                    "key": "currCity",
+                    "valueProperty": "value"
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0,
+                "type": "column",
+                "input": true,
+                "key": "",
+                "label": ""
+              }
+            ],
+            "label": "Columns",
+            "mask": false,
+            "type": "columns",
+            "input": false,
+            "key": "columns"
+          }
+        ]
+      },
+      {
+        "label": "Same as Current Address",
+        "mask": false,
+        "type": "checkbox",
+        "input": true,
+        "key": "sameAsCurrentAddress"
+    },
+      {
+        "label": "Permanent Address",
+        "mask": false,
+        "type": "container",
+        "input": true,
+        "key": "currAddress",
+        "components": [
+          {
+            "label": "Permanent Address",
+            "placeholder": "address 1",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "type": "textfield",
+            "input": true,
+            "key": "currentAddress"
+          },
+          {
+            "label": "",
+            "hideLabel": true,
+            "placeholder": "address 2",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "type": "textfield",
+            "input": true,
+            "key": "address2"
+          },
+          {
+            "columns": [
+              {
+                "components": [
+                  {
+                    "label": "Country",
+                    "mask": false,
+                    "type": "select",
+                    "input": true,
+                    "key": "permaCountry",
+                    "defaultValue": "",
+                    "validate": {
+                        "required": true,
+                        "select": false,
+                        "unique": false,
+                        "customMessage": "",
+                        "json": ""
+                    },
+                    "conditional": {
+                        "json": ""
+                    },
+                    "data": {
+                        "json": [
+                            {
+                                "id": 101,
+                                "name": "India",
+                                "iso3": "IND",
+                                "iso2": "IN",
+                                "numeric_code": "356",
+                                "phone_code": "91",
+                                "capital": "New Delhi",
+                                "currency": "INR",
+                                "currency_name": "Indian rupee",
+                                "currency_symbol": "₹",
+                                "tld": ".in",
+                                "native": "भारत",
+                                "region": "Asia",
+                                "subregion": "Southern Asia",
+                                "timezones": [
+                                    {
+                                        "zoneName": "Asia/Kolkata",
+                                        "gmtOffset": 19800,
+                                        "gmtOffsetName": "UTC+05:30",
+                                        "abbreviation": "IST",
+                                        "tzName": "Indian Standard Time"
+                                    }
+                                ],
+                                "translations": {
+                                    "kr": "인도",
+                                    "pt-BR": "Índia",
+                                    "pt": "Índia",
+                                    "nl": "India",
+                                    "hr": "Indija",
+                                    "fa": "هند",
+                                    "de": "Indien",
+                                    "es": "India",
+                                    "fr": "Inde",
+                                    "ja": "インド",
+                                    "it": "India",
+                                    "cn": "印度",
+                                    "tr": "Hindistan"
+                                },
+                                "latitude": "20.00000000",
+                                "longitude": "77.00000000",
+                                "emoji": "🇮🇳",
+                                "emojiU": "U+1F1EE U+1F1F3"
+                            },
+                            {
+                                "id": 102,
+                                "name": "Indonesia",
+                                "iso3": "IDN",
+                                "iso2": "ID",
+                                "numeric_code": "360",
+                                "phone_code": "62",
+                                "capital": "Jakarta",
+                                "currency": "IDR",
+                                "currency_name": "Indonesian rupiah",
+                                "currency_symbol": "Rp",
+                                "tld": ".id",
+                                "native": "Indonesia",
+                                "region": "Asia",
+                                "subregion": "South-Eastern Asia",
+                                "timezones": [
+                                    {
+                                        "zoneName": "Asia/Jakarta",
+                                        "gmtOffset": 25200,
+                                        "gmtOffsetName": "UTC+07:00",
+                                        "abbreviation": "WIB",
+                                        "tzName": "Western Indonesian Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Jayapura",
+                                        "gmtOffset": 32400,
+                                        "gmtOffsetName": "UTC+09:00",
+                                        "abbreviation": "WIT",
+                                        "tzName": "Eastern Indonesian Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Makassar",
+                                        "gmtOffset": 28800,
+                                        "gmtOffsetName": "UTC+08:00",
+                                        "abbreviation": "WITA",
+                                        "tzName": "Central Indonesia Time"
+                                    },
+                                    {
+                                        "zoneName": "Asia/Pontianak",
+                                        "gmtOffset": 25200,
+                                        "gmtOffsetName": "UTC+07:00",
+                                        "abbreviation": "WIB",
+                                        "tzName": "Western Indonesian Time"
+                                    }
+                                ],
+                                "translations": {
+                                    "kr": "인도네시아",
+                                    "pt-BR": "Indonésia",
+                                    "pt": "Indonésia",
+                                    "nl": "Indonesië",
+                                    "hr": "Indonezija",
+                                    "fa": "اندونزی",
+                                    "de": "Indonesien",
+                                    "es": "Indonesia",
+                                    "fr": "Indonésie",
+                                    "ja": "インドネシア",
+                                    "it": "Indonesia",
+                                    "cn": "印度尼西亚",
+                                    "tr": "Endonezya"
+                                },
+                                "latitude": "-5.00000000",
+                                "longitude": "120.00000000",
+                                "emoji": "🇮🇩",
+                                "emojiU": "U+1F1EE U+1F1E9"
+                            }
+                        ]
+                    },
+                    "properties": [
+                        {
+                            "key": "",
+                            "value": ""
+                        }
+                    ],
+                    "tags": [],
+                    "customConditional": "",
+                    "dataSrc": "json",
+                    "template": "<span>{{ item.name }}</span>",
+                    "limit": null,
+                    "url": "",
+                    "resource": null,
+                    "valueProperty": null,
+                    "selectValues": "",
+                    "disableLimit": false,
+                    "searchField": "",
+                    "refreshOn": null,
+                    "clearOnRefresh": false,
+                    "reference": false
+                },
+                  {
+                    "label": "District",
+                    "placeholder": "Choose your district",
+                    "mask": false,
+                    "type": "select",
+                    "input": true,
+                    "key": "permaDistrict",
+                    "valueProperty": "value"
+                  },
+                  {
+                    "label": "Pincode",
+                    "placeholder": "Enter your pincode",
+                    "allowMultipleMasks": false,
+                    "inputMasks": [
+                      {
+                        "label": "",
+                        "mask": ""
+                      }
+                    ],
+                    "type": "textfield",
+                    "input": true,
+                    "key": "pincode"
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0,
+                "type": "column",
+                "input": true,
+                "key": "",
+                "label": ""
+              },
+              {
+                "components": [
+                  {
+                    "label": "State",
+                    "mask": false,
+                    "type": "select",
+                    "input": true,
+                    "key": "state",
+                    "defaultValue": "",
+                    "data": {
+                        "json": indianState,
+                    },
+                    "dataSrc": "json",
+                    "template": "<span>{{ item.name }}</span>",
+                    "limit": null,
+                    "refreshOn": null,
+                    "url": "",
+                    "resource": null,
+                    "selectValues": "",
+                    "disableLimit": false,
+                    "searchField": "",
+                    "clearOnRefresh": false,
+                    "reference": false
+                  },
+                  {
+                    "label": "City",
+                    "placeholder": "Choose your city",
+                    "mask": false,
+                    "type": "select",
+                    "input": true,
+                    "key": "permaCity",
                     "valueProperty": "value"
                   }
                 ],
@@ -282,7 +772,6 @@ const BasicForm = () => {
         ]
       },
 
-     
       {
         "addAnotherPosition": "bottom",
         "label": "Qualification",
@@ -293,192 +782,192 @@ const BasicForm = () => {
         "input": true,
         "key": "qualification",
         "components": [
-            {
-                "label": false,
-                "hideLabel": true,
-                "placeholder": "College/Institution",
-                "allowMultipleMasks": false,
-                "inputMasks": [
-                    {
-                        "label": "",
-                        "mask": ""
-                    }
-                ],
-                "customClass": "Width auto",
-                "tableView": false,
-                "type": "textfield",
-                "input": true,
-                "key": "textField2",
-                "row": "0-0"
-            },
-            {
-                "label": false,
-                "hideLabel": true,
-                "placeholder": "degree",
-                "allowMultipleMasks": false,
-                "inputMasks": [
-                    {
-                        "label": "",
-                        "mask": ""
-                    }
-                ],
-                "customClass": "Width auto",
-                "tableView": false,
-                "type": "textfield",
-                "input": true,
-                "key": "textField3",
-                "row": "0-1"
-            },
-            {
-                "label": false,
-                "hideLabel": true,
-                "placeholder": "year of passing",
-                "customClass": "Width auto",
-                "mask": false,
-                "tableView": false,
-                "type": "number",
-                "input": true,
-                "key": "marks",
-                "row": "0-2"
-            },
-            {
-                "label": false,
-                "hideLabel": true,
-                "placeholder": "marks type",
-                "customClass": "Width auto",
-                "mask": false,
-                "tableView": false,
-                "type": "select",
-                "input": true,
-                "key": "select",
-                "row": "0-3",
-                "defaultValue": "",
-                "validate": {
-                    "select": false,
-                    "unique": false,
-                    "customMessage": "",
-                    "json": ""
-                },
-                "data": {
-                    "values": {
-                        "0": {
-                            "label": "percent",
-                            "value": "percent"
-                        },
-                        "1": {
-                            "label": "CGPA",
-                            "value": "cgpa"
-                        },
-                        "2": {
-                            "label": "others",
-                            "value": "others"
-                        }
-                    }
-                },
-                "url": "",
-                "resource": null,
-                "valueProperty": "value",
-                "selectValues": "",
-                "disableLimit": false,
-                "searchField": "",
-                "limit": null,
-                "refreshOn": null,
-                "clearOnRefresh": false,
-                "reference": false
-            },
-            {
-                "label": false,
-                "hideLabel": true,
-                "placeholder": "marks",
-                "customClass": "Width auto",
-                "mask": false,
-                "tableView": false,
-                "type": "number",
-                "input": true,
-                "key": "marks2",
-                "row": "0-4"
-            }
-        ]
-    },
-
-
-    {
-      "addAnotherPosition": "bottom",
-      "label": "Experience",
-      "addAnother": "",
-      "multiple": true,
-      "mask": false,
-      "type": "datagrid",
-      "input": true,
-      "key": "experience",
-      "components": [
           {
-              "label": false,
-              "hideLabel": true,
-              "placeholder": "Company",
-              "allowMultipleMasks": false,
-              "inputMasks": [
-                  {
-                      "label": "",
-                      "mask": ""
-                  }
-              ],
-              "type": "textfield",
-              "input": true,
-              "key": "company",
-              "row": "0-0"
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "College/Institution",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "customClass": "Width auto",
+            "tableView": false,
+            "type": "textfield",
+            "input": true,
+            "key": "textField2",
+            "row": "0-0"
           },
           {
-              "label": false,
-              "hideLabel": true,
-              "placeholder": "Designation",
-              "allowMultipleMasks": false,
-              "inputMasks": [
-                  {
-                      "label": "",
-                      "mask": ""
-                  }
-              ],
-              "type": "textfield",
-              "input": true,
-              "key": "designation",
-              "row": "0-1"
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "degree",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "customClass": "Width auto",
+            "tableView": false,
+            "type": "textfield",
+            "input": true,
+            "key": "textField3",
+            "row": "0-1"
           },
           {
-              "label": "",
-              "hideLabel": true,
-              "placeholder": " Duration(in years)",
-              "mask": false,
-              "type": "number",
-              "input": true,
-              "key": "durationInYears"
-          }
-      ]
-  },
-
-
-  {
-            "label": "Profile Photo",
-            "placeholder": "Choose a profile photo",
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "year of passing",
+            "customClass": "Width auto",
             "mask": false,
             "tableView": false,
-            "type": "file",
+            "type": "number",
             "input": true,
-            "key": "profilePhoto",
+            "key": "marks",
+            "row": "0-2"
+          },
+          {
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "marks type",
+            "customClass": "Width auto",
+            "mask": false,
+            "tableView": false,
+            "type": "select",
+            "input": true,
+            "key": "select",
+            "row": "0-3",
+            "defaultValue": "",
             "validate": {
-                "required": true,
-                "unique": false,
-                "customMessage": "Please select a photo",
-                "json": ""
+              "select": false,
+              "unique": false,
+              "customMessage": "",
+              "json": ""
             },
-            "storage": "base64",
-            "dir": "",
+            "data": {
+              "values": {
+                "0": {
+                  "label": "percent",
+                  "value": "percent"
+                },
+                "1": {
+                  "label": "CGPA",
+                  "value": "cgpa"
+                },
+                "2": {
+                  "label": "others",
+                  "value": "others"
+                }
+              }
+            },
             "url": "",
-            "imageSize": ""
-        },
-        
+            "resource": null,
+            "valueProperty": "value",
+            "selectValues": "",
+            "disableLimit": false,
+            "searchField": "",
+            "limit": null,
+            "refreshOn": null,
+            "clearOnRefresh": false,
+            "reference": false
+          },
+          {
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "marks",
+            "customClass": "Width auto",
+            "mask": false,
+            "tableView": false,
+            "type": "number",
+            "input": true,
+            "key": "marks2",
+            "row": "0-4"
+          }
+        ]
+      },
 
-    
+
+      {
+        "addAnotherPosition": "bottom",
+        "label": "Experience",
+        "addAnother": "",
+        "multiple": true,
+        "mask": false,
+        "type": "datagrid",
+        "input": true,
+        "key": "experience",
+        "components": [
+          {
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "Company",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "type": "textfield",
+            "input": true,
+            "key": "company",
+            "row": "0-0"
+          },
+          {
+            "label": false,
+            "hideLabel": true,
+            "placeholder": "Designation",
+            "allowMultipleMasks": false,
+            "inputMasks": [
+              {
+                "label": "",
+                "mask": ""
+              }
+            ],
+            "type": "textfield",
+            "input": true,
+            "key": "designation",
+            "row": "0-1"
+          },
+          {
+            "label": "",
+            "hideLabel": true,
+            "placeholder": " Duration(in years)",
+            "mask": false,
+            "type": "number",
+            "input": true,
+            "key": "durationInYears"
+          }
+        ]
+      },
+
+
+      {
+        "label": "Profile Photo",
+        "placeholder": "Choose a profile photo",
+        "mask": false,
+        "tableView": false,
+        "type": "file",
+        "input": true,
+        "key": "profilePhoto",
+        "validate": {
+          "required": true,
+          "unique": false,
+          "customMessage": "Please select a photo",
+          "json": ""
+        },
+        "storage": "base64",
+        "dir": "",
+        "url": "",
+        "imageSize": ""
+      },
+
+
+
 
       {
         "type": "button",
