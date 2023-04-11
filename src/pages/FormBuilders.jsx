@@ -68,10 +68,10 @@ const FormBuilders = () => {
                 onChange={handleFormChange}
             />
 
-            <div className='pt-5 ml-5'>
+            {/* <div className='pt-5 ml-5'>
                 <button className="btn btn-primary" onClick={copyToClipboard}>Copy </button> <span>{copySuccess}</span>
                 <pre>{jsonSchema}</pre>
-            </div>
+            </div> */}
 
 
         </div>
