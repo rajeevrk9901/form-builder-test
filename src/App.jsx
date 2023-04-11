@@ -7,6 +7,7 @@ import ContactUs from './components/ContactUs'
 import BasicInfo from './components/BasicInfo'
 import Address from './components/Address'
 import BasicForm from './components/BasicForm'
+import PreFill from './components/PreFill'
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path='/basicinfo' element={<BasicInfo />} />
         <Route path='/address' element={<Address />} />
         <Route path='/basicform' element={<BasicForm />} />
+        <Route path='/prefill' element={<PreFill />} />
         {/* <Route exact path='/form-builder' component={FormBuilder} /> */}
       </Routes>
     </BrowserRouter>
