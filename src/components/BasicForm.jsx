@@ -9,7 +9,7 @@ const BasicForm = () => {
     "components": [
       {
         "label": "Name",
-        "placeholder": "Enter your name",
+        // "placeholder": "Enter your name",
         "allowMultipleMasks": false,
         "inputMasks": [
           {
@@ -32,7 +32,7 @@ const BasicForm = () => {
       },
       {
         "label": "Email",
-        "placeholder": "Enter your email",
+        // "placeholder": "Enter your email",
         "type": "email",
         "input": true,
         "key": "email",
@@ -106,7 +106,7 @@ const BasicForm = () => {
       },
       {
         "label": "Pan Card Number",
-        "placeholder": "Enter your pan card no",
+        // "placeholder": "Enter your pan card no",
         "allowMultipleMasks": false,
         "inputMasks": [
           {
@@ -138,7 +138,7 @@ const BasicForm = () => {
       },
       {
         "label": "Aadhar Card Number",
-        "placeholder": "Enter your aadhar no",
+        // "placeholder": "Enter your aadhar no",
         "allowMultipleMasks": false,
         "inputMasks": [
           {
@@ -315,71 +315,71 @@ const BasicForm = () => {
                           "emoji": "🇮🇳",
                           "emojiU": "U+1F1EE U+1F1F3"
                         },
-                        {
-                          "id": 102,
-                          "name": "Indonesia",
-                          "iso3": "IDN",
-                          "iso2": "ID",
-                          "numeric_code": "360",
-                          "phone_code": "62",
-                          "capital": "Jakarta",
-                          "currency": "IDR",
-                          "currency_name": "Indonesian rupiah",
-                          "currency_symbol": "Rp",
-                          "tld": ".id",
-                          "native": "Indonesia",
-                          "region": "Asia",
-                          "subregion": "South-Eastern Asia",
-                          "timezones": [
-                            {
-                              "zoneName": "Asia/Jakarta",
-                              "gmtOffset": 25200,
-                              "gmtOffsetName": "UTC+07:00",
-                              "abbreviation": "WIB",
-                              "tzName": "Western Indonesian Time"
-                            },
-                            {
-                              "zoneName": "Asia/Jayapura",
-                              "gmtOffset": 32400,
-                              "gmtOffsetName": "UTC+09:00",
-                              "abbreviation": "WIT",
-                              "tzName": "Eastern Indonesian Time"
-                            },
-                            {
-                              "zoneName": "Asia/Makassar",
-                              "gmtOffset": 28800,
-                              "gmtOffsetName": "UTC+08:00",
-                              "abbreviation": "WITA",
-                              "tzName": "Central Indonesia Time"
-                            },
-                            {
-                              "zoneName": "Asia/Pontianak",
-                              "gmtOffset": 25200,
-                              "gmtOffsetName": "UTC+07:00",
-                              "abbreviation": "WIB",
-                              "tzName": "Western Indonesian Time"
-                            }
-                          ],
-                          "translations": {
-                            "kr": "인도네시아",
-                            "pt-BR": "Indonésia",
-                            "pt": "Indonésia",
-                            "nl": "Indonesië",
-                            "hr": "Indonezija",
-                            "fa": "اندونزی",
-                            "de": "Indonesien",
-                            "es": "Indonesia",
-                            "fr": "Indonésie",
-                            "ja": "インドネシア",
-                            "it": "Indonesia",
-                            "cn": "印度尼西亚",
-                            "tr": "Endonezya"
-                          },
-                          "latitude": "-5.00000000",
-                          "longitude": "120.00000000",
-                          "emoji": "🇮🇩",
-                          "emojiU": "U+1F1EE U+1F1E9"
-                        }
+                        // {
+                        //   "id": 102,
+                        //   "name": "Indonesia",
+                        //   "iso3": "IDN",
+                        //   "iso2": "ID",
+                        //   "numeric_code": "360",
+                        //   "phone_code": "62",
+                        //   "capital": "Jakarta",
+                        //   "currency": "IDR",
+                        //   "currency_name": "Indonesian rupiah",
+                        //   "currency_symbol": "Rp",
+                        //   "tld": ".id",
+                        //   "native": "Indonesia",
+                        //   "region": "Asia",
+                        //   "subregion": "South-Eastern Asia",
+                        //   "timezones": [
+                        //     {
+                        //       "zoneName": "Asia/Jakarta",
+                        //       "gmtOffset": 25200,
+                        //       "gmtOffsetName": "UTC+07:00",
+                        //       "abbreviation": "WIB",
+                        //       "tzName": "Western Indonesian Time"
+                        //     },
+                        //     {
+                        //       "zoneName": "Asia/Jayapura",
+                        //       "gmtOffset": 32400,
+                        //       "gmtOffsetName": "UTC+09:00",
+                        //       "abbreviation": "WIT",
+                        //       "tzName": "Eastern Indonesian Time"
+                        //     },
+                        //     {
+                        //       "zoneName": "Asia/Makassar",
+                        //       "gmtOffset": 28800,
+                        //       "gmtOffsetName": "UTC+08:00",
+                        //       "abbreviation": "WITA",
+                        //       "tzName": "Central Indonesia Time"
+                        //     },
+                        //     {
+                        //       "zoneName": "Asia/Pontianak",
+                        //       "gmtOffset": 25200,
+                        //       "gmtOffsetName": "UTC+07:00",
+                        //       "abbreviation": "WIB",
+                        //       "tzName": "Western Indonesian Time"
+                        //     }
+                        //   ],
+                        //   "translations": {
+                        //     "kr": "인도네시아",
+                        //     "pt-BR": "Indonésia",
+                        //     "pt": "Indonésia",
+                        //     "nl": "Indonesië",
+                        //     "hr": "Indonezija",
+                        //     "fa": "اندونزی",
+                        //     "de": "Indonesien",
+                        //     "es": "Indonesia",
+                        //     "fr": "Indonésie",
+                        //     "ja": "インドネシア",
+                        //     "it": "Indonesia",
+                        //     "cn": "印度尼西亚",
+                        //     "tr": "Endonezya"
+                        //   },
+                        //   "latitude": "-5.00000000",
+                        //   "longitude": "120.00000000",
+                        //   "emoji": "🇮🇩",
+                        //   "emojiU": "U+1F1EE U+1F1E9"
+                        // }
                       ]
                     },
                     "properties": [
@@ -403,18 +403,11 @@ const BasicForm = () => {
                     "clearOnRefresh": false,
                     "reference": false
                   },
-                  {
-                    "label": "District",
-                    "placeholder": "Choose your district",
-                    "mask": false,
-                    "type": "select",
-                    "input": true,
-                    "key": "currDistrict",
-                    "valueProperty": "value"
-                  },
+                  
+                  
                   {
                     "label": "Pincode",
-                    "placeholder": "Enter your pincode",
+                    // "placeholder": "Enter your pincode",
                     "allowMultipleMasks": false,
                     "inputMasks": [
                       {
@@ -462,13 +455,17 @@ const BasicForm = () => {
                   },
                   {
                     "label": "City",
-                    "placeholder": "Choose your city",
-                    "mask": false,
-                    "type": "select",
+                    "allowMultipleMasks": false,
+                    "inputMasks": [
+                        {
+                            "label": "",
+                            "mask": ""
+                        }
+                    ],
+                    "type": "textfield",
                     "input": true,
-                    "key": "currCity",
-                    "valueProperty": "value"
-                  }
+                    "key": "currCity"
+                },
                 ],
                 "width": 6,
                 "offset": 0,
@@ -488,6 +485,7 @@ const BasicForm = () => {
           }
         ]
       },
+
       {
         "label": "Same as Current Address",
         "mask": false,
@@ -495,6 +493,7 @@ const BasicForm = () => {
         "input": true,
         "key": "sameAsCurrentAddress"
       },
+
       {
         "label": "Permanent Address",
         "mask": false,
@@ -686,18 +685,10 @@ const BasicForm = () => {
                     "clearOnRefresh": false,
                     "reference": false
                   },
-                  {
-                    "label": "District",
-                    "placeholder": "Choose your district",
-                    "mask": false,
-                    "type": "select",
-                    "input": true,
-                    "key": "permaDistrict",
-                    "valueProperty": "value"
-                  },
+                  
                   {
                     "label": "Pincode",
-                    "placeholder": "Enter your pincode",
+                    // "placeholder": "Enter your pincode",
                     "allowMultipleMasks": false,
                     "inputMasks": [
                       {
@@ -745,13 +736,17 @@ const BasicForm = () => {
                   },
                   {
                     "label": "City",
-                    "placeholder": "Choose your city",
-                    "mask": false,
-                    "type": "select",
+                    "allowMultipleMasks": false,
+                    "inputMasks": [
+                        {
+                            "label": "",
+                            "mask": ""
+                        }
+                    ],
+                    "type": "textfield",
                     "input": true,
-                    "key": "permaCity",
-                    "valueProperty": "value"
-                  }
+                    "key": "permaCity"
+                },
                 ],
                 "width": 6,
                 "offset": 0,
@@ -965,9 +960,6 @@ const BasicForm = () => {
         "url": "",
         "imageSize": ""
       },
-
-
-
 
       {
         "type": "button",
